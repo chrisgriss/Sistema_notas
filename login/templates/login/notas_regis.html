@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Notas Registradas</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #080710;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .background {
+      width: 430px;
+      height: 520px;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 50%;
+    }
+
+    .shape-clear,
+    .shape-blur {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+    }
+
+    .shape-clear {
+      z-index: -1;
+    }
+
+    .shape-blur {
+      filter: blur(80px);
+      opacity: 0.6;
+      z-index: 0;
+    }
+
+    .shape-1-clear,
+    .shape-1-blur {
+      background: linear-gradient(#1845ad, #23a2f6);
+      top: 50%;
+      left: 50%;
+      transform: translate(-150%, -150%);
+    }
+
+    .shape-2-clear,
+    .shape-2-blur {
+      background: linear-gradient(to right, #ff512f, #f09819);
+      top: 35%;
+      left: 35%;
+      transform: translate(100%, 100%);
+    }
+
+    .form {
+      min-height: 520px;
+      width: 400px;
+      background-color: rgba(255,255,255,0.13);
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255,255,255,0.1);
+      box-shadow: 0 0 40px rgba(8,7,16,0.6);
+      padding: 50px 35px;
+      color: #ffffff;
+    }
+
+    h3 {
+      font-size: 28px;
+      font-weight: 500;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 25px;
+    }
+
+    th, td {
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 10px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    th {
+      background-color: rgba(255,255,255,0.1);
+      font-weight: 500;
+    }
+
+    input[type="number"] {
+      width: 60px;
+      background-color: rgba(255,255,255,0.07);
+      border: none;
+      border-radius: 4px;
+      padding: 4px;
+      text-align: center;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .promedio-box {
+      margin-top: 20px;
+      padding: 10px;
+      border: 2px solid #23a2f6;
+      background-color: rgba(35, 162, 246, 0.1);
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .promedio-box label {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .promedio-box span {
+      display: inline-block;
+      margin-top: 5px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background">
+    <div class="shape-clear shape-1-clear"></div>
+    <div class="shape-clear shape-2-clear"></div>
+    <div class="shape-blur shape-1-blur"></div>
+    <div class="shape-blur shape-2-blur"></div>
+  </div>
+
+  <div class="form">
+    <h3>Notas Registradas</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Notas</th>
+          <th>Calificación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <p> xd</p>
+        <tr>
+          <td><label >Nota 1</label></td>
+          <td><span id="nota1">8.5</span></td>
+        </tr>
+        <tr>
+          <td><label >Nota 2</label></td>
+          <td> <span id="nota2">8.3</span></td>
+        </tr>
+        <tr>
+          <td><label>Nota 3</label></td>
+          <td><span id="nota3">8</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="promedio-box">
+      <label>Promedio</label>
+      <br />
+      <span id="promedio">8.2</span>
+    </div>
+  </div>
+
+</body>
+</html>
