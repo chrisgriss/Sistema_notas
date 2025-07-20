@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>notas</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
+  <style>
+    body {
+      background-color: #080710;
+      margin: 0;
+    }
+
+    /* Esferas sin filtro  */
+    .shape-clear {
+      position: absolute;
+      border-radius: 50%;
+      z-index: -1;
+    }
+
+    /* Esferas con blur  */
+    .shape-blur {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.6;
+      z-index: 0;
+    }
+
+    /* Esfera Azul */
+    .shape-1-clear {
+      background: linear-gradient(#1845ad, #23a2f6);
+      width: 200px;
+      height: 200px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-150%, -150%);
+    }
+    .shape-1-blur {
+      background: linear-gradient(#1845ad, #23a2f6);
+      width: 200px;
+      height: 200px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-150%, -150%);
+    }
+
+    /* Esfera Naranja*/
+    .shape-2-clear {
+      background: linear-gradient(to right, #ff512f, #f09819);
+      width: 200px;
+      height: 200px;
+      top: 35%;
+      left: 44%;
+      transform: translate(100%, 100%);
+    }
+    .shape-2-blur {
+      background: linear-gradient(to right, #ff512f, #f09819);
+      width: 200px;
+      height: 200px;
+      top: 35%;
+      left: 44%;
+      transform: translate(100%, 100%);
+    }
+
+    /* Formulario */
+    .form-container {
+      backdrop-filter: blur(10px);
+      background-color: rgba(255 255 255 / 0.1);
+      border: 2px solid rgba(255 255 255 / 0.2);
+      box-shadow: 0 0 40px rgba(8,7,16,0.6);
+      border-radius: 12px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 400px;
+      position: relative;
+      z-index: 10;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+    }
+
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center relative overflow-hidden">
+
+  <!-- Esferas sin filtro -->
+  <div class="shape-clear shape-1-clear"></div>
+  <div class="shape-clear shape-2-clear"></div>
+
+  <!-- Esferas con blur  -->
+  <div class="shape-blur shape-1-blur"></div>
+  <div class="shape-blur shape-2-blur"></div>
+
+  <!-- Formulario -->
+  <div class="form-container">
+    <h1 class="text-3xl font-semibold text-center mb-6">Ingreso de Notas</h1>
+
+    <form class="space-y-6">
+      <!-- Nota 1 -->
+      <div class="grid grid-cols-2 items-center">
+        <label class="font-medium">Nota 1:</label>
+        <input type="number" id="nota1" placeholder="Ej: 85" class="w-full px-4 py-2 rounded bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      </div>
+
+
+
+      <!-- Nota 2 -->
+      <div class="grid grid-cols-2 items-center">
+        <label class="font-medium">Nota 2:</label>
+        <input type="number" id="nota2" placeholder="Ej: 90" class="w-full px-4 py-2 rounded bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      </div>
+
+
+
+      <!-- Nota 3 -->
+      <div class="grid grid-cols-2 items-center">
+        <label class="font-medium">Nota 3:</label>
+        <input type="number" id="nota3" placeholder="Ej: 78" class="w-full px-4 py-2 rounded bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      </div>
+
+
+
+      <!-- Boton -->
+      <div class="text-center pt-4">
+        <button type="submit" id="cargar_notas"class="w-full bg-white text-black font-bold py-3 rounded hover:bg-gray-100 transition">
+          Subir Notas
+        </button>
+
+
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>

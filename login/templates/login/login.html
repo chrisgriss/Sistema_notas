@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
  
     <title>xd </title>
@@ -32,23 +32,58 @@ body{
     position: absolute;
     border-radius: 50%;
 }
-.shape:first-child{
-    background: linear-gradient(
-        #1845ad,
-        #23a2f6
-    );
-    left: -80px;
-    top: -80px;
-}
-.shape:last-child{
-    background: linear-gradient(
-        to right,
-        #ff512f,
-        #f09819
-    );
-    right: -30px;
-    bottom: -80px;
-}
+   /* Esferas sin el filtro */
+    .shape-clear {
+      position: absolute;
+      border-radius: 50%;
+      z-index: -1;
+    }
+
+    /* Esferas con blur */
+    .shape-blur {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.6;
+      z-index: 0;
+    }
+
+    /* Esfera azul */
+    .shape-1-clear {
+      background: linear-gradient(#1845ad, #23a2f6);
+      width: 200px;
+      height: 200px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-150%, -150%);
+    }
+    .shape-1-blur {
+      background: linear-gradient(#1845ad, #23a2f6);
+      width: 200px;
+      height: 200px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-150%, -150%);
+    }
+
+    /* Esfera naranja */
+    .shape-2-clear {
+      background: linear-gradient(to right, #ff512f, #f09819);
+      width: 200px;
+      height: 200px;
+      top: 35%;
+      left: 35%;
+      transform: translate(100%, 100%);
+    }
+    .shape-2-blur {
+      background: linear-gradient(to right, #ff512f, #f09819);
+      width: 200px;
+      height: 200px;
+      top: 35%;
+      left: 35%;
+      transform: translate(100%, 100%);
+    }
+
 form{
     height: 520px;
     width: 400px;
@@ -135,8 +170,14 @@ button{
 </head>
 <body>
     <div class="background">
-        <div class="shape"></div>
-        <div class="shape"></div>
+    <!-- Esferas sin filtro -->
+  <div class="shape-clear shape-1-clear"></div>
+  <div class="shape-clear shape-2-clear"></div>
+
+  <!-- Esferas con blur -->
+  <div class="shape-blur shape-1-blur"></div>
+  <div class="shape-blur shape-2-blur"></div>
+  
     </div>
     <form>
         <h3>Login</h3>
@@ -147,7 +188,7 @@ button{
         <label for="password">Contraseña</label>
         <input type="password" placeholder="Contraseña" id="password">
 
-        <button>Log In</button>
+        <button>Iniciar Sesion</button>
         <div class="social">
           <div class="go"><i class="fab fa-google"></i>  Google</div>
           <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
