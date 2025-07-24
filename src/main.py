@@ -1,5 +1,6 @@
 from flask import Flask, session
 from flask_cors import CORS
+#from src.Blueprints_base.urls import urls_bp
 from Blueprints_base.urls import urls_bp
 
 def create_app():

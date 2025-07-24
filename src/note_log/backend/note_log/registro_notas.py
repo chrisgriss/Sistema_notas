@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from Classandobj.Data_user import get_datos
+#from src.Classandobj.Data_user import get_datos
 
 registro_bp = Blueprint('registro', __name__)
 
