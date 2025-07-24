@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #080710;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+        }
+
+        /* NAVBAR */
+        nav {
+            width: 100%;
+            background-color: rgba(255,255,255,0.05);
+            padding: 15px 30px;
+            backdrop-filter: blur(8px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 20px;
+            font-weight: 600;
+            color: white;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #23a2f6;
+        }
+
+        .background {
+            width: 430px;
+            height: 520px;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 55%;
+        }
+
+        .shape-clear,
+        .shape-blur {
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .shape-blur {
+            filter: blur(80px);
+            opacity: 0.6;
+            z-index: 0;
+        }
+
+        .shape-clear {
+            z-index: -1;
+        }
+
+        .shape-1-clear,
+        .shape-1-blur {
+            background: linear-gradient(#1845ad, #23a2f6);
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-150%, -150%);
+        }
+
+        .shape-2-clear,
+        .shape-2-blur {
+            background: linear-gradient(to right, #ff512f, #f09819);
+            width: 200px;
+            height: 200px;
+            top: 35%;
+            left: 35%;
+            transform: translate(100%, 100%);
+        }
+
+        .home-box {
+            width: 400px;
+            padding: 50px 35px;
+            background-color: rgba(255,255,255,0.13);
+            border: 2px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 40px rgba(8,7,16,0.6);
+            border-radius: 10px;
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .home-box h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .home-box p {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #e5e5e5;
+        }
+
+        .logout-button {
+            margin-top: 30px;
+            display: inline-block;
+            background: linear-gradient(to right, #ff512f, #f09819);
+            color: white;
+            text-decoration: none;
+            padding: 10px 25px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logout-button:hover {
+            background: linear-gradient(to right, #f09819, #ff512f);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Sistema Notas</div>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'registrar' %}">Registro</a></li>
+            <li><a href="{% url 'mostrar' %}">Ver Notas</a></li>
+        </ul>
+    </nav>
+
+    <div class="background">
+        <div class="shape-clear shape-1-clear"></div>
+        <div class="shape-clear shape-2-clear"></div>
+        <div class="shape-blur shape-1-blur"></div>
+        <div class="shape-blur shape-2-blur"></div>
+    </div>
+
+    <div class="home-box">
+        <h2>Sistema de Registro de Notas</h2>
+        {% if mensaje %}
+        <p>{{ mensaje }}</p>
+        {% endif %}
+        {% if asignatura %}
+        <p><strong>Asignatura:</strong> {{ asignatura }}</p>
+        {% endif %}
+
+        <a href="{% url 'logout' %}" class="logout-button">Cerrar sesión</a>
+    </div>
+</body>
+</html>

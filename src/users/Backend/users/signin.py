@@ -18,12 +18,12 @@ def signin():
 
     datos = get_datos()
     
-    if not username or not name or not password:
+    if not username or not name or not password or not name or not email or not asignatura:
         return jsonify({'error': 'No hay datos'}), 400
     else:
         if vf_password(password):
             if datos.verify_user(username):
-                return jsonify({'error': 'El usuario ya existe'}), 400
+                return jsonify({'error': 'El usuario ya existe'}), 401
             else:
                 profesor = Profesor(username, name, email, password, asignatura)
                 if datos.add_user(profesor):

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>notas</title>
+  <title>Ingreso de Notas</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
@@ -12,33 +12,26 @@
     body {
       background-color: #080710;
       margin: 0;
+      font-family: 'Poppins', sans-serif;
     }
 
-    /* Esferas sin filtro  */
-    .shape-clear {
-      position: absolute;
-      border-radius: 50%;
-      z-index: -1;
-    }
-
-    /* Esferas con blur  */
+    .shape-clear,
     .shape-blur {
       position: absolute;
       border-radius: 50%;
+    }
+
+    .shape-blur {
       filter: blur(80px);
       opacity: 0.6;
       z-index: 0;
     }
 
-    /* Esfera Azul */
-    .shape-1-clear {
-      background: linear-gradient(#1845ad, #23a2f6);
-      width: 200px;
-      height: 200px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-150%, -150%);
+    .shape-clear {
+      z-index: -1;
     }
+
+    .shape-1-clear,
     .shape-1-blur {
       background: linear-gradient(#1845ad, #23a2f6);
       width: 200px;
@@ -48,15 +41,7 @@
       transform: translate(-150%, -150%);
     }
 
-    /* Esfera Naranja*/
-    .shape-2-clear {
-      background: linear-gradient(to right, #ff512f, #f09819);
-      width: 200px;
-      height: 200px;
-      top: 35%;
-      left: 44%;
-      transform: translate(100%, 100%);
-    }
+    .shape-2-clear,
     .shape-2-blur {
       background: linear-gradient(to right, #ff512f, #f09819);
       width: 200px;
@@ -66,7 +51,6 @@
       transform: translate(100%, 100%);
     }
 
-    /* Formulario */
     .form-container {
       backdrop-filter: blur(10px);
       background-color: rgba(255 255 255 / 0.1);
@@ -81,56 +65,49 @@
       color: white;
       font-family: 'Poppins', sans-serif;
     }
-
   </style>
 </head>
-<body class="min-h-screen flex items-center justify-center relative overflow-hidden">
+<body class="min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
 
-  <!-- Esferas sin filtro -->
+  <!-- NAVBAR similar a la anterior -->
+  <nav class="fixed top-0 w-full bg-white/5 backdrop-blur-md z-50 px-6 py-4 flex justify-between items-center shadow-md">
+    <div class="text-white font-semibold text-lg">Sistema Notas</div>
+    <ul class="flex gap-6 text-white font-medium">
+      <li><a href="{% url 'home' %}" class="hover:text-blue-400 transition">Home</a></li>
+      <li><a href="{% url 'registrar' %}" class="hover:text-blue-400 transition">Registro</a></li>
+      <li><a href="{% url 'mostrar' %}" class="hover:text-blue-400 transition">Ver Notas</a></li>
+    </ul>
+  </nav>
+
+  <!-- Esferas decorativas -->
   <div class="shape-clear shape-1-clear"></div>
   <div class="shape-clear shape-2-clear"></div>
-
-  <!-- Esferas con blur  -->
   <div class="shape-blur shape-1-blur"></div>
   <div class="shape-blur shape-2-blur"></div>
 
   <!-- Formulario -->
-  <div class="form-container">
-    <h1 class="text-3xl font-semibold text-center mb-6">Ingreso de Notas</h1>
+  <div class="form-container mt-28">
+    <h1 class="text-3xl font-semibold text-center mb-6">Ingreso de Nota</h1>
 
-    <form class="space-y-6">
+    <form class="space-y-6" method="POST">
+      {% csrf_token %}
       <!-- Nota 1 -->
       <div class="grid grid-cols-2 items-center">
-        <label class="font-medium">Nota 1:</label>
-        <input type="number" id="nota1" placeholder="Ej: 85" class="w-full px-4 py-2 rounded bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+        <label class="font-medium">Nota:</label>
+        <input type="number" name="nota" placeholder="Ej: 85" class="w-full px-4 py-2 rounded bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-blue-400" />
       </div>
 
-
-
-      <!-- Nota 2 -->
-      <div class="grid grid-cols-2 items-center">
-        <label class="font-medium">Nota 2:</label>
-        <input type="number" id="nota2" placeholder="Ej: 90" class="w-full px-4 py-2 rounded bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-blue-400" />
-      </div>
-
-
-
-      <!-- Nota 3 -->
-      <div class="grid grid-cols-2 items-center">
-        <label class="font-medium">Nota 3:</label>
-        <input type="number" id="nota3" placeholder="Ej: 78" class="w-full px-4 py-2 rounded bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-blue-400" />
-      </div>
-
-
-
-      <!-- Boton -->
+      <!-- Botón -->
       <div class="text-center pt-4">
-        <button type="submit" id="cargar_notas"class="w-full bg-white text-black font-bold py-3 rounded hover:bg-gray-100 transition">
-          Subir Notas
+        <button type="submit" name="cargar_notas" class="w-full bg-white text-black font-bold py-3 rounded hover:bg-gray-100 transition">
+          Subir Nota
         </button>
-
-
       </div>
+      {% if message %}
+      <div class="mt-4 p-3 rounded {% if 'Exitosamente' in message or 'correctamente' in message %}bg-green-500/50{% else %}bg-red-500/50{% endif %} text-white text-center font-medium">
+        {{ message }}
+      </div>
+      {% endif %}
     </form>
   </div>
 

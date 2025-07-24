@@ -22,8 +22,9 @@ from users import views as user_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', user_views.login, name='login'),
-    # path('/signin', user_views),
-    # path('/home', note_views),
-    # path('/notas/registrar', note_views),
-    # path('/notas/mostrar', note_views),
+    path('signin', user_views.signin, name='signin'),
+    path('home', note_views.home, name='home'),
+    path('logout', user_views.logout, name='logout'),
+    path('notas/registrar', note_views.registro, name='registrar'),
+    path('notas/mostrar', note_views.ver_notas, name='mostrar'),
 ]

@@ -1,15 +1,13 @@
 from flask import Blueprint, request, jsonify, session
 #from src.Classandobj.Data_user import get_datos
 from Classandobj.Data_user import get_datos
+from users.Backend.users.login import get_username
 
 home_bp = Blueprint('home', __name__)
 
 @home_bp.route('/home', methods=['GET'])
 def home():
-    if 'username' not in session or not session.get('logged_in'):
-        return jsonify({'error': 'Acceso denegado, por favor inicia sesión'}), 401
-    
-    username = session['username']
+    username = get_username()
     user_data = get_datos()
 
     if user_data.verify_notas(username):

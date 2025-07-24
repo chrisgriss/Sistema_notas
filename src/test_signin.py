@@ -38,7 +38,7 @@ class TestApp(unittest.TestCase):
             "asignatura" : "Matematica Intermedia 1"
         }
         response = self.cliente.post('/api/signin',json = datos)
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 400)
         self.assertEqual(response.get_json(), {'error': 'La contraseña debe tener al menos 8 caracteres, una mayúscula y un dígito'})
 
 if __name__ == '__main__':
